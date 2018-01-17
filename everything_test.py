@@ -52,7 +52,7 @@ setosa_y = [a[0] for i, a in enumerate(iris_2d) if binary_target[i] == 1]
 non_setosa_x = [a[1] for i, a in enumerate(iris_2d) if binary_target[i] == 0]
 non_setosa_y = [a[0] for i, a in enumerate(iris_2d) if binary_target[i] == 0]
 plt.plot(setosa_x, setosa_y, 'rx', ms=10, mew=2, label='setosa''')
-plt.plot(non_setosa_x, non_setosa_y, 'ro', label='Non-setosa')
+plt.plot(non_setosa_x, non_setosa_y, 'go', label='Non-setosa')
 plt.plot(x, ablineValues, 'b-')
 plt.xlim([0.0, 2.7])
 plt.ylim([0.0, 7.1])
