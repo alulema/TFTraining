@@ -28,7 +28,7 @@ for i in range(100):
     rand_y = np.transpose([y_vals[rand_index]])
     sess.run(train_step, feed_dict={x_data: rand_x, y_target: rand_y})
 
-    if (i + 1) % 5 == 0:
+    if (i + 1) % 2 == 0:
         print('Step #' + str(i + 1) + ' A = ' + str(sess.run(A)))
         temp_loss = sess.run(loss, feed_dict={x_data: rand_x, y_target: rand_y})
         print('Loss = ' + str(temp_loss))
@@ -57,13 +57,13 @@ for i in range(100):
     rand_y = [y_vals[rand_index]]
     sess.run(train_step, feed_dict={x_data: rand_x, y_target: rand_y})
 
-    if (i + 1) % 5 == 0:
+    if (i + 1) % 2 == 0:
         print('Step #' + str(i + 1) + ' A = ' + str(sess.run(A)))
         temp_loss = sess.run(loss, feed_dict={x_data: rand_x, y_target: rand_y})
         print('Loss = ' + str(temp_loss))
         loss_stochastic.append(temp_loss)
 
-plt.plot(range(0, 100, 5), loss_stochastic, 'b-', label='Stochastic Loss')
-plt.plot(range(0, 100, 5), loss_batch, 'r--', label='Batch Loss')
+plt.plot(range(0, 100, 2), loss_stochastic, 'b-', label='Stochastic Loss')
+plt.plot(range(0, 100, 2), loss_batch, 'r--', label='Batch Loss')
 plt.legend(loc='upper right', prop={'size': 11})
 plt.show()
