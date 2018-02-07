@@ -1,7 +1,6 @@
 """
 Set of matrix equations Ax = b
 We need to solve coefficients in matrix x, considering A is not a square matrix.
-The solution can be expressed as x = (A^t*A)^-1 A^t*b
 """
 import matplotlib.pyplot as plt
 import tensorflow as tf
