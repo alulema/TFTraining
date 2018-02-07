@@ -14,10 +14,10 @@ batch_size = 25
 
 x_data = tf.placeholder(shape=(None, 1), dtype=tf.float32)
 y_target = tf.placeholder(shape=(None, 1), dtype=tf.float32)
-A = tf.Variable(tf.random_normal(shape=[1, 1]))
+m = tf.Variable(tf.random_normal(shape=[1, 1]))
 b = tf.Variable(tf.random_normal(shape=[1, 1]))
 
-model_output = tf.add(tf.matmul(x_data, A), b)
+model_output = tf.add(tf.matmul(x_data, m), b)
 
 loss = tf.reduce_mean(tf.square(y_target - model_output))
 init = tf.global_variables_initializer()
@@ -36,24 +36,24 @@ for i in range(100):
     loss_vec.append(temp_loss)
 
     if (i + 1) % 25 == 0:
-        print('Step #' + str(i + 1) + ' A = ' + str(sess.run(A)) + 'b = ' + str(sess.run(b)))
+        print('Step #' + str(i + 1) + ' A = ' + str(sess.run(m)) + 'b = ' + str(sess.run(b)))
         print('Loss = ''' + str(temp_loss))
 
-[slope] = sess.run(A)
+[m_slope] = sess.run(m)
 [y_intercept] = sess.run(b)
 best_fit = []
 for i in x_vals:
-    best_fit.append(slope * i + y_intercept)
+    best_fit.append(m_slope * i + y_intercept)
 
-plt.plot(x_vals, y_vals, 'o', label='Data Points')
-plt.plot(x_vals, best_fit, 'r-', label='Best fit line', linewidth=3)
+plt.plot(x_vals, y_vals, 'o', label='Points')
+plt.plot(x_vals, best_fit, 'r-', label='Linear Reg.', linewidth=3)
 plt.legend(loc='upper left')
 plt.title('Sepal Length vs Pedal Width')
 plt.xlabel('Pedal Width')
 plt.ylabel('Sepal Length')
 plt.show()
 plt.plot(loss_vec, 'k-')
-plt.title('L2 Loss per Generation')
-plt.xlabel('Generation')
+plt.title('L2 Loss')
+plt.xlabel('Batches')
 plt.ylabel('L2 Loss')
 plt.show()
