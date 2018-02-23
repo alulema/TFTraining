@@ -1,3 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
 .gitignore
 .idea/
+/LinearRegresssion/tflogs/events.out.tfevents.1519338025.GEDEON
+LinearRegresssion/tflogs/
